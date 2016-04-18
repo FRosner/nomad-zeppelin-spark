@@ -2,16 +2,14 @@ job "zeppelin-job" {
   datacenters = ["dc1"]
   group "zeppelin-group" {
     task "zeppelin-task" {
-      driver = "docker"
-      config = {
-        image = "frosner/zeppelin"
-        port_map = {
-          http = 8080
-        }
+      driver = "raw_exec"
+      config {
+        # When running a binary that exists on the host, the path must be absolute
+        command = "/usr/local/bin/zeppelin"
       }
       resources {
-        cpu = 500
-        memory = 128
+        cpu = 1000
+        memory = 512
         network {
           mbits = 10
           port "http" {
