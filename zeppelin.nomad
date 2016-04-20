@@ -18,12 +18,12 @@ job "zeppelin-job" {
       }
     }
   }
-  group "spark-master" {
+  group "spark-master-group" {
     task "spark-master-task" {
       driver = "raw_exec"
       config {
         # When running a binary that exists on the host, the path must be absolute
-        command = "/Users/frosner/Documents/projects/nomad-zeppelin-spark/start-spark-nomad.sh"
+        command = "/Users/frosner/Documents/projects/nomad-zeppelin-spark/start-spark-master-nomad.sh"
       }
       resources {
         cpu = 250
